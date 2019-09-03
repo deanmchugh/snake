@@ -2,10 +2,10 @@
   "name": "snake",
   "version": "1.0.0",
   "description": "snake game",
-  "main": "index.js",
+  "main": "./src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html"
+    "start": "parcel ./src/index.html"
   },
   "author": "dean mchugh",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "typescript": "^3.6.2"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   }

@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    font-family: 'VT323', monospace;
+}
+
+.Header{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+}
+
+.Cell{
+    background-color: gray;
+}
