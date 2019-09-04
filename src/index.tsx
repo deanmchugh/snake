@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 
 import Board from './components/Board'
 import Header from './components/Header'
+import Logic from './components/Logic';
 
 const Main = () => {
     return (
@@ -15,3 +16,8 @@ const Main = () => {
 
 const container = document.getElementById("root")
 ReactDOM.render(<Main />, container)
+
+document.addEventListener('keypress', (e) => {
+    const keyName = e.key
+    Logic(keyName)
+})

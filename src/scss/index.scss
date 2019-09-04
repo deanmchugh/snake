@@ -12,6 +12,16 @@ html{
     grid-template-columns: 1fr 1fr; 
 }
 
-.Cell{
-    background-color: gray;
+.Board{
+    margin: 1vw 10vw 1vw 10vw;
+    .Row{
+        display: flex;
+        .Cell{
+            background-color: blue;
+            $size: 1.5vw;
+            width: $size;
+            height: $size;
+            margin: 0.5px;
+        }
+    }
 }
