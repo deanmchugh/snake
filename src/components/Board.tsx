@@ -1,7 +1,8 @@
 import React from 'react'
+import { BOARD } from '../data'
 
-const CELLS_X = 50
-const CELLS_Y = 50
+const CELLS_X = BOARD.WIDTH
+const CELLS_Y = BOARD.HEIGHT
 
 const getCells = () => {
     const rows = []
