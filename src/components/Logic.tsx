@@ -2,6 +2,7 @@ import { BOARD, SNAKE } from '../data'
 const MIN = 0
 const WIDTHMAX = BOARD.WIDTH - 1
 const HEIGHTMAX = BOARD.HEIGHT - 1
+let direction = ''
 
 const coords = (position: string) => {
     const xcood = position.slice(0,2)
@@ -9,24 +10,33 @@ const coords = (position: string) => {
     return {xcood, ycood}
 }
 
-const direction = (input: string) => {
+const getDirection = (input: string) => {
+    if (input === 'w') direction = 'up'; 
+    if (input === 's') direction = 'down';
+    if (input === 'a') direction = 'left';
+    if (input === 'd') direction = 'right';
+}
+
+const engine = () => {
     const {xcood, ycood} = coords(SNAKE[SNAKE.length - 1])
     let x = parseInt(xcood); let y = parseInt(ycood)
-    if (input === 'w') x = x - 1; 
-    if (input === 's') x = x + 1;
-    if (input === 'a') y = y - 1;
-    if (input === 'd') y = y + 1;
+    if (direction === 'up') x = x - 1; 
+    if (direction === 'down') x = x + 1;
+    if (direction === 'left') y = y - 1;
+    if (direction === 'right') y = y + 1;
     if (x >= MIN && x <= WIDTHMAX && y >= MIN && y <= HEIGHTMAX){
         const xStr = x.toString().padStart(2, '0')
         const yStr = y.toString().padStart(2, '0')
         SNAKE.push(xStr + yStr)
     }
+    const square: HTMLElement | null = document.getElementById(SNAKE[SNAKE.length - 1])
+    square.style.background = 'gray'
+    setTimeout(engine, 300)
 }
 
 const Logic = (input: string) => {
-    direction(input)
-    const square: HTMLElement | null = document.getElementById(SNAKE[SNAKE.length - 1])
-    square.style.background = 'gray'
+    engine()
+    getDirection(input)
 }
 
 export default Logic 
