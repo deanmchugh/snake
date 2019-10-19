@@ -5,11 +5,12 @@ const CELLS_X = BOARD.WIDTH
 const CELLS_Y = BOARD.HEIGHT
 
 const getCells = () => {
+    let int = 1
     const rows = []
     for (let y = 0; y < CELLS_Y; y++){
         const cells = []
         for (let x = 0; x < CELLS_X; x++){
-            cells.push(<div className='Cell' key={`${y}${x}`} id={`${y.toString().padStart(2, '0')}${x.toString().padStart(2, '0')}`}></div>)
+            cells.push(<div className='Cell' key={`${y}${x}`} id={int++}></div>)
         }
         rows.push(<div className='Row' key={y}>{cells}</div>)
     }

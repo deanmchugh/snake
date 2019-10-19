@@ -3,4 +3,4 @@ export const BOARD = {
     HEIGHT: 50
 }
 
-export let SNAKE = ['2525']
+export let SNAKE = [1275]
