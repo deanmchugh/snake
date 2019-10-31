@@ -13,7 +13,7 @@ const getDirection = (input: string) => {
 const setSquare = (square: number, color: string) => {
     const stSquare = square.toString()
     const selectSquare: HTMLElement | null = document.getElementById(stSquare)
-    selectSquare.style.background = color
+    if (selectSquare) selectSquare.style.background = color
 }
 
 const setFood = () => {
