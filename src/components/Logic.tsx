@@ -32,9 +32,10 @@ const drawSnake = () => {
 
 const engine = () => {
     let snakeHead = SNAKE[SNAKE.length - 1]
-    if (direction === 'up') 1 < snakeHead && snakeHead < BOARD.WIDTH ? 
+    console.log(snakeHead)
+    if (direction === 'up') 1 <= snakeHead && snakeHead <= BOARD.WIDTH ? 
         snakeHead = snakeHead + 2450 : snakeHead = snakeHead - 50
-    else if (direction === 'down') 2451 < snakeHead && snakeHead < 2500 ? 
+    else if (direction === 'down') 2451 <= snakeHead && snakeHead <= 2500 ? 
         snakeHead = snakeHead - 2450 : snakeHead = snakeHead + 50
     else if (direction === 'left') snakeHead % 50 === 0 + 1 ? 
         snakeHead = snakeHead + 49 : snakeHead = snakeHead - 1
@@ -44,6 +45,7 @@ const engine = () => {
         SNAKE.push(snakeHead)
     }
     if (SNAKE.length === length) SNAKE.shift()
+    console.log(snakeHead)
     drawSnake()
     setFood()
     setTimeout(engine, 1000)
