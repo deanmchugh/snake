@@ -4,7 +4,7 @@ let length = 5
 let FOOD = 0
 let started = new Boolean(false)
 
-const getDirection = (input: string) => {
+function getDirection(input: string) {
     if (input === 'w') direction = 'up'
     if (input === 's') direction = 'down'
     if (input === 'a') direction = 'left'
@@ -12,13 +12,18 @@ const getDirection = (input: string) => {
     if (input === ' ') direction = 'pause'
 }
 
-const setSquare = (square: number, color: string) => {
-    const stSquare = square.toString()
-    const selectSquare: HTMLElement | null = document.getElementById(stSquare)
-    if (selectSquare) selectSquare.style.background = color
+function setSquare(square: number, color: string) {
+    return new Promise((res, rej) => {
+        const stSquare = square.toString()
+        const selectSquare: HTMLElement | null = document.getElementById(stSquare)
+        if (selectSquare) {
+            selectSquare.style.background = color
+            res()
+        }
+    })
 }
 
-const setFood = () => {
+function setFood() {
     if (!FOOD || SNAKE.includes(FOOD)) {
         const newLocation = Math.floor(Math.random() * (BOARD.WIDTH * BOARD.HEIGHT))
         FOOD = newLocation
@@ -27,12 +32,12 @@ const setFood = () => {
     }
 }
 
-const drawSnake = () => {
+function drawSnake() {
     setSquare(SNAKE[0], 'blue')
     setSquare(SNAKE[SNAKE.length - 1], 'gray')
 }
 
-const engine = () => {
+function engine() {
     started = true
     if (direction !== 'pause') {
         let snakeHead = SNAKE[SNAKE.length - 1]
@@ -53,6 +58,10 @@ const engine = () => {
         setTimeout(engine, 1000)
     }
     
+}
+
+function history() {
+
 }
 
 const Logic = (input: string) => {
