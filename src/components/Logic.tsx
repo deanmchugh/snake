@@ -33,8 +33,10 @@ function setFood() {
 }
 
 function drawSnake() {
-    setSquare(SNAKE[0], 'blue')
-    setSquare(SNAKE[SNAKE.length - 1], 'gray')
+    return new Promise((res, rej) => {
+        Promise.all([setSquare(SNAKE[0], 'blue'), setSquare(SNAKE[SNAKE.length - 1], 'gray')])
+        .then(returnRes => res())
+    })  
 }
 
 function engine() {
@@ -53,15 +55,10 @@ function engine() {
             SNAKE.push(snakeHead)
         }
         if (SNAKE.length === length) SNAKE.shift()
-        drawSnake()
         setFood()
-        setTimeout(engine, 1000)
+        drawSnake().then(resolve => setTimeout(engine, 1000))
     }
     
-}
-
-function history() {
-
 }
 
 const Logic = (input: string) => {
